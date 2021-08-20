@@ -5,12 +5,11 @@ import "./styles.scss";
 const Navbar = () => {
     return (
 
-        <nav>
-            <div className="wrap">
-                <div className="logo">
-                    <img src={Logo} alt="logo" />
-                </div>
-
+        <nav data-test="navbarComponent">
+                <div className="wrap">
+                    <div className="logo">
+                        <img data-test="logoIMG"src={Logo} alt="logo" />
+                    </div>
             </div>
         </nav>
     )
