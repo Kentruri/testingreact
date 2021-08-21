@@ -1,7 +1,8 @@
 import React from "react";
 import { shallow } from "enzyme";
 import Headline from "./index";
-import {findByTestData} from '../../Utils'
+import {findByTestData, checkProps} from '../../Utils'
+
 import '../../setupTest'
 
 
@@ -11,6 +12,29 @@ const setUp = (props={}) => {
 }
 
 describe('Headline component', () => {
+
+    describe('Checking PropTypes', () => {
+        it('Should not throw a warning', () => {
+
+            const expectedProps = {
+                header: ' Test Header',
+                desc: 'Test Desc',
+                tempArr: [{
+                    fName: 'Test fName',
+                    lName: 'Test lName',
+                    email: 'test@hotmail.com',
+                    age: 19,
+                    onlineStatus: false
+                }]
+            };
+
+            const propsErr = checkProps(Headline, expectedProps, 'props');
+           //if this fails is cuz there's a alert from the propTypes, and will not be undefined
+            expect(propsErr).toBeUndefined();
+
+        })
+    })
+
     describe('Have props',() => {
         let wrapper;
         beforeEach(() => {
